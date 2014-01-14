@@ -1,24 +1,21 @@
 # Rippr
 
-TODO: Write a gem description
+A command line CD ripper written in Ruby. Uses MusicBrainz for metadata lookup
+and cdparanoia to do the ripping.
+
+## Requirements
+
+Rippr requires cdparanoia and libdiscid. Both are available in Homebrew for Mac.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'rippr'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it using:
 
     $ gem install rippr
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ rippr rip
 
 ## Contributing
 
