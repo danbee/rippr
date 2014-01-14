@@ -13,10 +13,9 @@ class Cli < Thor
 
   def rip
     disc = 'pmzhT6ZlFiwSRCdVwV0eqire5_Y-'
+    puts "Getting metadata from MusicBrainz..."
     metadata = Rippr::MetaData.new(disc)
-    metadata.releases.each do |release|
-      puts release.title
-    end
+    print metadata.releases
   end
 end
 
