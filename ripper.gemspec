@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Ripper::VERSION
   spec.authors       = ["Dan Barber"]
   spec.email         = ["dan@new-bamboo.co.uk"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Rip your CD's on the command line. Uses MusicBrainz and CDParanoia.}
+  spec.summary       = %q{Rip your CD's on the command line.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+  spec.add_dependency "discid"
+  spec.add_dependency "thor"
 end
