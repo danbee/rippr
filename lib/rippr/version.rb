@@ -1,3 +1,3 @@
-module Ripper
+module Rippr
   VERSION = "0.0.1"
 end

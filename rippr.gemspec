@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ripper/version'
+require 'rippr/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ripper"
-  spec.version       = Ripper::VERSION
+  spec.name          = "rippr"
+  spec.version       = Rippr::VERSION
   spec.authors       = ["Dan Barber"]
   spec.email         = ["dan@new-bamboo.co.uk"]
   spec.description   = %q{Rip your CD's on the command line. Uses MusicBrainz and CDParanoia.}
@@ -22,5 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
 
   spec.add_dependency "discid"
+  spec.add_dependency "musicbrainz"
   spec.add_dependency "thor"
 end

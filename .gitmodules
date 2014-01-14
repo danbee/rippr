@@ -1,0 +1,4 @@
+[submodule "lib/vendor/musicbrainz"]
+	path = lib/vendor/musicbrainz
+	url = git@github.com:danbee/musicbrainz.git
+	branch = feature/find-release-by-discid

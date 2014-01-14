@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.setup
+
+require 'ostruct'
+require 'thor'
+require 'musicbrainz'
+require 'rippr'
+
+class Cli < Thor
+  desc "rip", "Rip the CD currently in the drive."
+
+  def rip
+    disc = 'pmzhT6ZlFiwSRCdVwV0eqire5_Y-'
+    metadata = Rippr::MetaData.new(disc)
+    metadata.releases.each do |release|
+      puts release.title
+    end
+  end
+end
+
+Cli.start(ARGV)
