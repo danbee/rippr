@@ -3,19 +3,30 @@
 require 'bundler'
 Bundler.setup
 
-require 'ostruct'
 require 'thor'
-require 'musicbrainz'
 require 'rippr'
 
 class Cli < Thor
   desc "rip", "Rip the CD currently in the drive."
 
   def rip
-    disc = 'pmzhT6ZlFiwSRCdVwV0eqire5_Y-'
-    puts "Getting metadata from MusicBrainz..."
-    metadata = Rippr::MetaData.new(disc)
-    print metadata.releases
+    begin
+      disc = DiscId.read('/dev/rdisk2')
+    rescue DiscId::DiscError
+      puts "Disc not present."
+      exit
+    end
+
+    puts "Searching MusicBrainz..."
+    metadata = Rippr::MetaData.new(disc.id)
+
+    release = metadata.choose_release
+
+    if release.nil?
+      puts "No release selected."
+      exit
+    end
+    puts release.id
   end
 end
 

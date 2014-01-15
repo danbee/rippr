@@ -1,5 +1,8 @@
-require "musicbrainz_discid"
-require "rippr/version"
+require 'ostruct'
+require 'discid'
+require 'musicbrainz'
+require 'musicbrainz_discid'
+require 'rippr/version'
 
 module Rippr
   class MetaData
@@ -14,14 +17,19 @@ module Rippr
       @discid = discid
     end
 
+    def choose_release
+      return releases[0] if releases.count == 1
+      puts "There are multiple matches, please choose:"
+      releases.to_enum.with_index(1) do |release, index|
+        puts "#{index}: #{release.title} (#{release.country})"
+      end
+      print "Choose a release: "
+      index = STDIN.gets.chomp.to_i
+      releases[index - 1] unless index.zero?
+    end
+
     def releases
       @releases ||= MusicBrainz::Release.find_by_discid(@discid)
     end
-  end
-end
-
-class DiscId
-  def self.read(dev)
-    OpenStruct.new(id: 'pmzhT6ZlFiwSRCdVwV0eqire5_Y-') # Stubbed for initial testing
   end
 end
